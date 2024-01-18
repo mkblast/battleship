@@ -9,6 +9,23 @@ module.exports = {
 
   mode: "development",
 
+  module: {
+    rules: [
+      {
+        test: /\.(?:js|mjs|cjs)$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: [
+              ['@babel/preset-env', { targets: "defaults" }]
+            ]
+          }
+        }
+      }
+    ]
+  },
+
   devServer: {
     static: {
       directory: path.join(__dirname, 'dist'),
